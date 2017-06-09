@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class SpellFireball : MonoBehaviour {
+public class SpellFireball : NetworkBehaviour {
 
     public GameObject FireBall;
     public int Power = 15;
@@ -13,6 +14,11 @@ public class SpellFireball : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(!isLocalPlayer)
+        {
+            return;
+        }
+
 		if(Input.GetKeyDown(KeyCode.F))
         {
             throwFireBall();
@@ -22,7 +28,6 @@ public class SpellFireball : MonoBehaviour {
     public void throwFireBall()
     {
         StartCoroutine(throwCoroutine(10f, 1.5f));
-
     }
 
     IEnumerator throwCoroutine(float distance, float time)

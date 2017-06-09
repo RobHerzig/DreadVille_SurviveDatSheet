@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class FireBall : MonoBehaviour {
+public class FireBall : NetworkBehaviour {
 
     int ballDamage = 0;
     bool triggered = false;
@@ -51,5 +52,18 @@ public class FireBall : MonoBehaviour {
     public bool GetTriggered()
     {
         return triggered;
+    }
+
+    [Command]
+    void CmdTellServerWhoWasShot(GameObject go, int dmg)
+    {
+        //GameObject go = GameObject.Find(ID);
+        go.GetComponent<Health>().TakeDamage(dmg);
+    }
+    [Command]
+    void CmdTellServerWhichEnemyWasShot(GameObject go, int dmg)
+    {
+        //GameObject go = GameObject.Find(ID);
+        go.GetComponent<EnemyHealth>().TakeDamage(dmg);
     }
 }
