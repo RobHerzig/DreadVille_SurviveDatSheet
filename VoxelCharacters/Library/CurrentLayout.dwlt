@@ -106,7 +106,7 @@ MonoBehaviour:
     y: 30
     width: 1536
     height: 731
-  m_MinSize: {x: 479, y: 492}
+  m_MinSize: {x: 477, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 1
   controlID: 23
@@ -130,8 +130,8 @@ MonoBehaviour:
     y: 0
     width: 1536
     height: 450
-  m_MinSize: {x: 479, y: 221}
-  m_MaxSize: {x: 8004, y: 4021}
+  m_MinSize: {x: 477, y: 221}
+  m_MaxSize: {x: 8002, y: 4021}
   vertical: 0
   controlID: 24
 --- !u!114 &7
@@ -180,8 +180,8 @@ MonoBehaviour:
     y: 0
     width: 568
     height: 450
-  m_MinSize: {x: 277, y: 71}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_MinSize: {x: 432, y: 271}
   m_MaxSize: {x: 14002, y: 10021}
   vertical: 0
-  controlID: 111
+  controlID: 64
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -309,7 +309,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoom: 0
     m_UniformScale: 1
     m_UpDirection: 1
@@ -598,19 +598,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Assets/Shaders
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Assets/Shaders
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Rob\Documents\ComputerspielepraktikumSS2017\GitProject\VoxelCharacters
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 95}
-    m_SelectedIDs: 5a2c0000
-    m_LastClickedID: 11354
-    m_ExpandedIDs: 0000000082260000b8260000d22600000027000026280000aa2800005a290000a0290000542a0000562a0000902a0000d42a0000002b00002a2b00000a2c0000382c0000862c0000a82c000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 173}
+    m_SelectedIDs: d42c0000
+    m_LastClickedID: 11476
+    m_ExpandedIDs: 000000001a280000502800006a28000096280000be290000442a0000fa2a0000442b0000fa2b0000fc2b0000362c00007c2c0000a82c0000d42c0000b62d0000e62d0000322e0000562e000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -638,7 +638,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000082260000b8260000d22600000027000026280000aa2800005a290000a0290000542a0000562a0000902a0000d42a0000002b00002a2b00000a2c0000382c0000862c0000a82c0000
+    m_ExpandedIDs: 000000001a280000502800006a28000096280000be290000442a0000fa2a0000442b0000fa2b0000fc2b0000362c00007c2c0000a82c0000d42c0000b62d0000e62d0000322e0000562e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -665,7 +665,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: d234000092adffff22ddffffa02500002825000068250000882400004c660000482400004c9e0000609e00009e3b00007027000050000100ce00010058010100141601000c160100721c0100c81d01005e1c0100401e010066250100d40101006e300000a23000009a300000a628000000000000ba280000be260000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -747,9 +747,9 @@ MonoBehaviour:
     height: 260
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
+    m_SelectedIDs: d42c0000
     m_LastClickedID: 0
-    m_ExpandedIDs: 64edffff12eeffff8eefffffe2fbffff00000000
+    m_ExpandedIDs: 64fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
