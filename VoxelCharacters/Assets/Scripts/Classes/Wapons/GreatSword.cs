@@ -9,9 +9,13 @@ public enum beatState
     STRIKE_STRONG
 };
 
-public class GreatSword : MonoBehaviour {
+public class GreatSword : Wapon{
 
-   
+	public GreatSword (WaponsModel model)
+	{
+		this.model = model;
+		prefab = model.greatSword;
+	}
     beatState state = beatState.IDLE;
 
     public int NormalDamage = 10;
@@ -30,15 +34,7 @@ public class GreatSword : MonoBehaviour {
             other.GetComponent<EnemyHealth>().TakeDamage(10);
         }
     }
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+ 
 
     public void setState(beatState newState)
     {

@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Crossbow : MonoBehaviour {
+public class Crossbow : Wapon {
 
+	public Crossbow (WaponsModel model)
+	{
+		this.model = model;
+		prefab = model.crossbow;
+	}
     public GameObject Bolt;
     public Transform TargetCenter, TargetLeft, TargetRight;
 	// Use this for initialization
