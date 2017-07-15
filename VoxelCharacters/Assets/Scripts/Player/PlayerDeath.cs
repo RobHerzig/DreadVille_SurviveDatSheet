@@ -27,8 +27,6 @@ public class PlayerDeath : NetworkBehaviour {
         //TODO: Disable all the stuff
         GetComponent<Player>().enabled = false;
         GetComponent<Shoot>().enabled = false;
-        GetComponent<SpellFireball>().enabled = false;
-
         GetComponent<MovementControllerSatanist>().StopAllMovement();
         GetComponent<MovementControllerSatanist>().enabled = false;
 

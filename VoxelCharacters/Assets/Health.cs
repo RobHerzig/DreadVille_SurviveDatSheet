@@ -6,10 +6,10 @@ using System.Collections;
 public class Health : NetworkBehaviour
 {
 
-    public int maxHealth = 100;
+	float maxHealth = 100;
 
     [SyncVar(hook = "OnChangeHealth")]
-    public int currentHealth;
+	public float currentHealth;
 
     private bool shouldDie = false;
     public bool isDead = false;
@@ -25,35 +25,27 @@ public class Health : NetworkBehaviour
     public RectTransform healthBar;
 
     HealthViewControl healthView;
-
+	Player player;
     private void Start()
     {
+		player= gameObject.GetComponent<Player> ();
+		maxHealth = player.MaxHealth;
         //healthView = GetComponent<HealthViewControl>();
         currentHealth = maxHealth;
         if (healthBar == null)
             healthBar = GameObject.Find("HealthBarForeground").GetComponent<RectTransform>();
-        //healthText = GameObject.Find("HealthText").GetComponent<Text>();
-        //setHealthText(currentHealth);
+		StartCoroutine (RegenerateHealthRoutine ());
     }
 
     private void Update()
     {
-
+		
         CheckCondition();
 
         if (!isLocalPlayer)
             return;
+		maxHealth = player.MaxHealth;
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            TakeDamage(5);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            if(GameObject.FindGameObjectWithTag("Other_Player") != null)
-                GameObject.FindGameObjectWithTag("Other_Player").GetComponent<Health>().TakeDamage(6);
-        }
     }
 
     void CheckCondition()
@@ -82,8 +74,14 @@ public class Health : NetworkBehaviour
             isDead = false;
         }
     }
-
-    public void TakeDamage(int amount)
+	IEnumerator RegenerateHealthRoutine(){
+		while (true) {
+			yield return new WaitForSeconds (1);
+			if(!isDead&& currentHealth< maxHealth)
+				currentHealth += player.healthRegeneration;
+		}
+	}
+	public void TakeDamage(float amount)
     {
         if (!isServer)
             return;
@@ -91,7 +89,6 @@ public class Health : NetworkBehaviour
         currentHealth -= amount;
         //setHealthText(currentHealth);
 
-        Debug.LogWarning("REDUCING HP BY " + amount + " ON " + gameObject.name + " / " + gameObject.tag);
 
         if (currentHealth <= 0)
         {
@@ -103,8 +100,28 @@ public class Health : NetworkBehaviour
             //isDead = false;
         }
     }
+	public void TakeHeal(float amount)
+	{
+		if (!isServer)
+			return;
 
-    void setHealthText(int newHealth)
+		currentHealth += amount;
+		//setHealthText(currentHealth);
+
+		Debug.LogWarning("INCREASE HP BY " + amount + " ON " + gameObject.name + " / " + gameObject.tag);
+
+		if (currentHealth >= maxHealth)
+		{
+			currentHealth = maxHealth;
+
+		
+		} else
+		{
+			
+		}
+	}
+
+	void setHealthText(float newHealth)
     {
         if (isLocalPlayer)
             healthText.text = newHealth.ToString() + "HP";
@@ -121,7 +138,7 @@ public class Health : NetworkBehaviour
         }
     }
 
-    void OnChangeHealth(int health)
+	void OnChangeHealth(float health)
     {
         currentHealth = health;
         //setHealthText(health);

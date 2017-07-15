@@ -10,6 +10,7 @@ using UnityStandardAssets.CrossPlatformInput;
 [RequireComponent(typeof(CapsuleCollider))]
 public class MovementControllerSatanist : NetworkBehaviour {
     Animator anim;
+
 	
 	void Awake () {
         anim = GetComponent<Animator>();
@@ -18,8 +19,9 @@ public class MovementControllerSatanist : NetworkBehaviour {
 	void Update () {
         if (!isLocalPlayer)
         {
-            gameObject.tag = "Other_Player";
-            gameObject.GetComponentInChildren<Camera>().enabled = false;
+			
+            //gameObject.tag = "Other_Player";
+          gameObject.GetComponentInChildren<Camera>().enabled = false;
             gameObject.GetComponentInChildren<AudioListener>().enabled = false;
             return;
         }

@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public abstract class Class : MonoBehaviour {
+public abstract class Class : NetworkBehaviour {
 
-	internal ClassModel model;
 
 	internal byte currSKillSet;
 	internal GameObject prefab;
@@ -31,5 +31,10 @@ public abstract class Class : MonoBehaviour {
 		Destroy (secoundSkill);
 		Destroy (ultimate);
 
+	}
+	public void Init(){
+		//TODO
+		//if (GameController.Instance.PlayerClass == 0)
+		//	NetworkManager.singleton.playerPrefab.transform.GetChild (1).gameObject.SetActive (true);
 	}
 }

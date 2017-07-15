@@ -10,17 +10,29 @@ public class EnemyTarget : NetworkBehaviour {
     private Transform myTransform;
     private Transform targetTransform;
     private LayerMask raycastLayer;
-    private float radius = 100;
+	public float radius = 1;
+	private float normalSpeed = 1.5f;
+	public bool isCroudControlled;
+	internal bool isSlowed;
+	public Transform PlayerBase; 
+
+
 	// Use this for initialization
 	void Start () {
+		PlayerBase = GameObject.Find ("PlayerBase").transform;
+		targetTransform = PlayerBase.transform;
         agent = GetComponent<NavMeshAgent>();
         myTransform = transform;
         raycastLayer = 1 << LayerMask.NameToLayer("Player");
+		float distanceToPlayer;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        SearchForTarget();
+		if (targetTransform == null)
+			targetTransform = PlayerBase;
+		
+       	SearchForTarget();
         MoveToTarget();
 	}
 
@@ -31,7 +43,7 @@ public class EnemyTarget : NetworkBehaviour {
             return;
         }
         
-        if(targetTransform == null)
+		if(targetTransform == PlayerBase)
         {
             Collider[] hitColliders = Physics.OverlapSphere(myTransform.position, radius, raycastLayer);
             if(hitColliders.Length > 0)
@@ -41,19 +53,43 @@ public class EnemyTarget : NetworkBehaviour {
             }
         }
 
-        if(targetTransform != null && targetTransform.GetComponent<Health>().isDead)
+		if(targetTransform != PlayerBase && targetTransform.GetComponent<Health>().isDead)
         {
-            targetTransform = null;
+			targetTransform = PlayerBase;
         }
     }
 
     void MoveToTarget()
     {
-        if(targetTransform != null && isServer)
+		if(targetTransform != null && isServer &&!isCroudControlled)
         {
             SetNavDestination(targetTransform);
         }
     }
+
+	public void CroudControllThis(float durration)
+	{
+		StartCoroutine(CCCoroutine (durration));
+	}
+	IEnumerator CCCoroutine(float durration)
+	{
+		isCroudControlled = true;
+		yield return new WaitForSeconds (durration);
+		isCroudControlled = false;
+	}
+
+	public void SlowThis(float durration,float percent){
+		if (!isSlowed) {
+			StartCoroutine (SlowCoroutine (durration, percent));
+		}
+	}
+
+	IEnumerator SlowCoroutine(float durration,float percent){
+		agent.speed = normalSpeed * (1f - percent);
+		yield return new WaitForSeconds (durration);
+		agent.speed = normalSpeed;
+		isSlowed = false;
+	}
 
     void SetNavDestination(Transform destination)
     {
