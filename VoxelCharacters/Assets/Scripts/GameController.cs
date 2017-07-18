@@ -12,7 +12,8 @@ public class GameController : NetworkBehaviour {
 	internal int WaveCounter = 0;
 	int GameState = 0;
 	public	int TimeBetweenWaves = 10;
-	public int  bonusValueForNextWave = 2;
+	public float  EnemyScaleWithWave = 0.2f;
+	public int  EnemybonusValueForNextWave = 2;
 	float time;
 
 
@@ -57,7 +58,7 @@ public class GameController : NetworkBehaviour {
 			if (time >= TimeBetweenWaves) {
 				time = 0;
 				GameState = 1;
-				EnemySpawnController.ValueOfWaves += bonusValueForNextWave;
+				EnemySpawnController.ValueOfWaves += EnemybonusValueForNextWave;
 			}
 			break;
 

@@ -86,7 +86,7 @@ public class Health : NetworkBehaviour
         if (!isServer)
             return;
 
-        currentHealth -= amount;
+		currentHealth -= amount* (1-player.armor);
         //setHealthText(currentHealth);
 
 

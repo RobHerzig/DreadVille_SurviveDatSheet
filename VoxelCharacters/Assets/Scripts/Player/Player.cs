@@ -14,6 +14,8 @@ public class Player :  NetworkBehaviour{
 
 	internal float currXP= 0;
 	public float XPForLevelUp = 100;
+	internal int Gold=0;
+
 	public Skill primarySkill;
 	public Skill secoundarySkill;
 	public Skill teritraySkill;

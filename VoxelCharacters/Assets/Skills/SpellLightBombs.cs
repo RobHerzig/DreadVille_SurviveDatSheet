@@ -27,7 +27,7 @@ public class SpellLightBombs : Skill {
 
 
 	IEnumerator SphereSpawner(){
-		Vector3 currForward = transform.forward*0.5f;
+		Vector3 currForward = transform.forward*0.3f;
 		float radius = currForward.x + currForward.y;
 		float scope = radius * Mathf.PI * 2;
 		//float timetoWait = scope / (numerOFSpheres*spawnSpeed);

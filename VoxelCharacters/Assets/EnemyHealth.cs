@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 public class EnemyHealth : NetworkBehaviour {
-	public float maxHealth = 100;
+	internal float maxHealth = 100;
   
     [SyncVar(hook = "OnChangeHealth")]
 	private float health;
@@ -36,6 +36,7 @@ public class EnemyHealth : NetworkBehaviour {
 
     // Use this for initialization
     void Awake () {
+		maxHealth = GetComponent<Enemy> ().MaxHealth;
 		health = maxHealth;
 	}
 	

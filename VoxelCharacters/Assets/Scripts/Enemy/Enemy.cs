@@ -19,7 +19,13 @@ public abstract class Enemy : NetworkBehaviour,IComparer<Enemy> {
 
 	internal Vector3 currTarget;
 
-
+	void Awake(){
+		ScaleEenemy ();
+	}
+	protected void  ScaleEenemy(){
+		damage += GameController.singleton.WaveCounter*GameController.singleton.EnemyScaleWithWave *damage;
+		MaxHealth += GameController.singleton.WaveCounter*GameController.singleton.EnemyScaleWithWave *MaxHealth;
+	}
 
 	// Use this for initialization
 	public int Compare (Enemy x, Enemy y)

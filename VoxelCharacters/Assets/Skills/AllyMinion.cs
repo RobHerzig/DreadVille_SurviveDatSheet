@@ -12,7 +12,7 @@ public class AllyMinion : NetworkBehaviour {
 	private float speed = 0;
 	float targetSwitchduration= 0;
 	float roationspeed;
-	private float radius = 100;
+	public float radius = 5;
 	private LayerMask raycastLayer;
 	bool isTargetPlayer;
 	Vector3 newVelocity;
