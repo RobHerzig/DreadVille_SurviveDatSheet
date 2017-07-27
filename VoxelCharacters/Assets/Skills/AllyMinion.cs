@@ -17,6 +17,9 @@ public class AllyMinion : NetworkBehaviour {
 	bool isTargetPlayer;
 	Vector3 newVelocity;
 	void Update(){
+		if (!isServer) {
+			return;
+		}
 		GetComponent<Rigidbody> ().velocity = Vector3.Lerp (GetComponent<Rigidbody> ().velocity, newVelocity, Time.deltaTime*roationspeed);
 	}
 	public void InitAlly(float damage,float heal,float speed,float targetSwitchDuration,float roationspeed)
@@ -29,6 +32,9 @@ public class AllyMinion : NetworkBehaviour {
 	}
 
 	void Start(){
+		if (!isServer) {
+			return;
+		}
 		StartCoroutine (TargetCoroutine());
 		//newVelocity = transform.forward*speed;
 		raycastLayer = 1 << LayerMask.NameToLayer("Player");

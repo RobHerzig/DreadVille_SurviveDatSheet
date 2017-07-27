@@ -21,6 +21,7 @@ public abstract class Enemy : NetworkBehaviour,IComparer<Enemy> {
 
 	void Awake(){
 		ScaleEenemy ();
+		gameObject.AddComponent<EnemyTarget> ();
 	}
 	protected void  ScaleEenemy(){
 		damage += GameController.singleton.WaveCounter*GameController.singleton.EnemyScaleWithWave *damage;

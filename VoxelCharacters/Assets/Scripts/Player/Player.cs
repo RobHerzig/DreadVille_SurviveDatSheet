@@ -24,18 +24,22 @@ public class Player :  NetworkBehaviour{
 	Skill thissecoundarySkill;
 	Skill thisteritraySkill;
 	Skill thisUltimateSkill;
-	PlayerUI skillBar;
-	 public LevelSystem levelSystem;
+	public PlayerUI skillBar;
+	internal LevelSystem levelSystem;
   
 	internal NetworkInstanceId PlayerID;
 	// Use this for initialization
-	void Awake () {
+	void Start () {
+		if (!isLocalPlayer) {
+			return;
+		}	
+		skillBar = Instantiate (skillBar);
 		levelSystem = GetComponent<LevelSystem> ();
 		thisprimarySkill= InitSKill (primarySkill);
 		thissecoundarySkill= InitSKill (secoundarySkill);
 		thisteritraySkill= InitSKill (teritraySkill);
 		thisUltimateSkill= InitSKill (UltimateSkill);
-		InitButtons ();
+		//InitButtons ();
     }
 
 	Skill InitSKill(Skill skill){
@@ -48,10 +52,7 @@ public class Player :  NetworkBehaviour{
 		if (!isLocalPlayer) {
 			return;
 		}
-		Debug.Log (currXP);
 		setXpBar (currXP);
-		if (Input.GetKeyDown (KeyCode.L))
-			currXP += 10;
 		CheckLevelUp ();
 		PlayerID = gameObject.GetComponent<NetworkIdentity> ().netId;
 		skillBar.UpdateLevel (Level);

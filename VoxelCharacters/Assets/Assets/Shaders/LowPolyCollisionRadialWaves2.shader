@@ -341,6 +341,7 @@ Shader "Trolltunga/LowPolyCollisionRadialWaves 2.0"
 
 					v2f o;
 					o.pos = UnityObjectToClipPos(v.vertex);
+					UNITY_INITIALIZE_OUTPUT(v2f, o);
 					return o;
 				}
 				

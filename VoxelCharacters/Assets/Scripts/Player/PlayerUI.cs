@@ -27,7 +27,8 @@ public class PlayerUI : MonoBehaviour {
 			break;
 		case 3: 
 			teritraySkill.transform.GetChild (0).GetComponent<Image> ().fillAmount = currCooldown / Cooldown;
-			break;case 4: 
+			break;
+		case 4: 
 			UltimateSkill.transform.GetChild (0).GetComponent<Image> ().fillAmount =currCooldown / Cooldown;
 			break;
 

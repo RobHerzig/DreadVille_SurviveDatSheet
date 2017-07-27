@@ -21,6 +21,7 @@ public class GrowingSphere : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
 		white = transform.GetChild (0).GetComponent<ParticleSystem> ();
 		blue = transform.GetChild (1).GetComponent<ParticleSystem> ();
 		red = transform.GetChild (2).GetComponent<ParticleSystem> ();
@@ -28,6 +29,7 @@ public class GrowingSphere : NetworkBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		
 		if (transform.GetChild (1).gameObject.activeSelf || transform.GetChild (2).gameObject.activeSelf)
 			transform.GetChild (0).gameObject.SetActive (false);
 		grow ();
