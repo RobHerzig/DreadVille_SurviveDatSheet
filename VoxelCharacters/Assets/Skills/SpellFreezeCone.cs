@@ -21,6 +21,7 @@ public class SpellFreezeCone : Skill {
 		FreezeCone coneScript = instance.GetComponent<FreezeCone>();
 		coneScript.initDamage(damage);
 		coneScript.initFreezeTime (freezeTime);
+		coneScript.SetOrigin (gameObject);
 		NetworkServer.Spawn (instance);
 		Destroy (instance,durration);
 	}

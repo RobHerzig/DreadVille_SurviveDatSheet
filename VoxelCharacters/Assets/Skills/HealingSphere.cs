@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class HealingSphere : NetworkBehaviour {
+public class HealingSphere : Projectile {
 
 	NetworkInstanceId isFromPlayer;
 	float ballDamage = 0;
@@ -49,7 +49,7 @@ public class HealingSphere : NetworkBehaviour {
 	{
 		isFromPlayer = PlayerID;
 	}
-	private void OnTriggerEnter(Collider other)
+	protected override void TriggerEnter(Collider other)
 	{
 		if (other.GetComponent<Player>() != null) 
 		{

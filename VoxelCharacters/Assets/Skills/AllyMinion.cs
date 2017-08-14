@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.AI;
-public class AllyMinion : NetworkBehaviour {
+public class AllyMinion : Projectile {
 
 	NetworkInstanceId isFromPlayer;
 	float AllyDamage = 0;
@@ -40,7 +40,7 @@ public class AllyMinion : NetworkBehaviour {
 		raycastLayer = 1 << LayerMask.NameToLayer("Player");
 
 	}
-	private void OnTriggerEnter(Collider other)
+	protected override void TriggerEnter(Collider other)
 	{
 		if (other.GetComponent<Player>() != null) 
 		{
@@ -72,8 +72,8 @@ public class AllyMinion : NetworkBehaviour {
 				int randomInt = Random.Range(0, hitColliders.Length);
 				currTarget = hitColliders[randomInt].transform;
 			}
-
-		newVelocity = speed*(currTarget.position - transform.position).normalized;
+		if(newVelocity != null)
+			newVelocity = speed*(currTarget.position - transform.position).normalized;
 	
 	}
 	IEnumerator TargetCoroutine(){

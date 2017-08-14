@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class FreezeCone : NetworkBehaviour {
+public class FreezeCone : Projectile {
 
 	float ConeDamage = 0;
 	float freezeTime = 0;
@@ -27,8 +27,7 @@ public class FreezeCone : NetworkBehaviour {
 		freezeTime = FreezeTime;
 	}
 
-	private void OnTriggerEnter(Collider other)
-	{
+	protected override void TriggerEnter(Collider other){
 	 if (other.tag == "Enemy")
 		{
 			Debug.Log("CONE HIT " + other.tag);

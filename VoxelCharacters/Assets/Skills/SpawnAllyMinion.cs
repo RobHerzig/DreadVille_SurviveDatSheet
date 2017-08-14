@@ -31,6 +31,7 @@ public class SpawnAllyMinion : Skill {
 	{
 		GameObject instance = Instantiate(Ally, transform.position + transform.up * 0.6f, transform.rotation) as GameObject;
 		instance.GetComponent<AllyMinion>().InitAlly(damage,damage,allySpeed,targetSwitchDuration,allyRotationSpeed);
+		instance.GetComponent<AllyMinion> ().SetOrigin (gameObject);
 		NetworkServer.Spawn (instance);
 		Destroy (instance, allyDurration);
 	}

@@ -35,7 +35,6 @@ public class GameController : NetworkBehaviour {
 	}
 
 	void GameFlow(){
-		Debug.Log (GameState);
 	//state 0 : wait till Player Spawned
 	// state 1: wave spaw
 	// state 2: wait till wave is killed
@@ -71,7 +70,6 @@ public class GameController : NetworkBehaviour {
 			return;
 		}
 			
-		Debug.Log ("game init");
 		StartCoroutine (StartGameRoutine (TimeTillStart));
 
 	}

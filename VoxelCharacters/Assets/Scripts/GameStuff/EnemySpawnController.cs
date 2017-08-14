@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using System.Linq;
 public class EnemySpawnController : NetworkBehaviour {
 	
 	public GameObject[] SpawnPoints;
@@ -39,7 +40,7 @@ public class EnemySpawnController : NetworkBehaviour {
 				SpawnableEnemies.Add (normalEnemys [randomIndex]);
 		}
 		int currWaveValue = waveValue;
-		//SpawnableEnemies.Sort ();
+		SpawnableEnemies = SpawnableEnemies.OrderBy (t => t.value).ToList();
 		SpawnableEnemies.Reverse ();
 		List<Enemy> SpawnList = new List<Enemy> ();
 		foreach (Enemy enemy in SpawnableEnemies) {

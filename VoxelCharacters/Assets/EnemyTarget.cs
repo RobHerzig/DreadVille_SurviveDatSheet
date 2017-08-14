@@ -42,7 +42,10 @@ public class EnemyTarget : NetworkBehaviour {
         {
             return;
         }
-        
+		if (GetComponent<AggroSystem> ().Target != null) {
+			targetTransform = GetComponent<AggroSystem> ().Target.transform;
+		}
+			
 		if(targetTransform == PlayerBase)
         {
             Collider[] hitColliders = Physics.OverlapSphere(myTransform.position, radius, raycastLayer);

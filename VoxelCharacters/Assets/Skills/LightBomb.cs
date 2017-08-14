@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class LightBomb : NetworkBehaviour {
+public class LightBomb : Projectile {
 
 
 	Transform Player;
@@ -74,7 +74,7 @@ public class LightBomb : NetworkBehaviour {
 
 
 
-	private void OnTriggerEnter(Collider other)
+	protected override void TriggerEnter(Collider other)
 	{
 	if (other.tag == "Enemy")
 		{

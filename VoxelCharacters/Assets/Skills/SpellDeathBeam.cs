@@ -41,6 +41,7 @@ public class SpellDeathBeam : Skill {
 		instance.transform.parent = gameObject.transform;
 		beamScript.initDamage(damage);
 		beamScript.InitID (gameObject.GetComponent<NetworkIdentity>().netId);
+		beamScript.SetOrigin (gameObject);
 		instance.transform.parent = transform;
 		NetworkServer.SpawnWithClientAuthority (instance, gameObject);
 		RpcSetParent (gameObject, instance);

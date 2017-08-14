@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class FireBall : NetworkBehaviour {
+public class FireBall : Projectile {
 
 	float ballDamage = 0;
     bool triggered = false;
@@ -26,7 +26,7 @@ public class FireBall : NetworkBehaviour {
 	{
 		isFromPlayer = PlayerID;
 	}
-    private void OnTriggerEnter(Collider other)
+	protected override void TriggerEnter(Collider other)
     {
         
 		if (other.GetComponent<Player>() != null && !other.GetComponent<Player>().PlayerID.Equals(isFromPlayer)) 

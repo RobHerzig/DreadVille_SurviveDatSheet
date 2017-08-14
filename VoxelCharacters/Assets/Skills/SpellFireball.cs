@@ -23,6 +23,7 @@ public class SpellFireball : Skill {
 		FireBall ballScript = instance.GetComponent<FireBall>();
 		ballScript.initDamage(damage);
 		ballScript.InitID (gameObject.GetComponent<NetworkIdentity>().netId);
+		ballScript.SetOrigin (gameObject);
 		NetworkServer.Spawn (instance);
 		Destroy (instance, 5f);
 

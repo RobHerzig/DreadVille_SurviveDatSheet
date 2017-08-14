@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Networking;
-public abstract class Enemy : NetworkBehaviour,IComparer<Enemy> {
+public abstract class Enemy : NetworkBehaviour {
 
 	public float MaxHealth = 100f;
 	public float damage= 1;
@@ -21,24 +21,13 @@ public abstract class Enemy : NetworkBehaviour,IComparer<Enemy> {
 
 	void Awake(){
 		ScaleEenemy ();
-		gameObject.AddComponent<EnemyTarget> ();
 	}
 	protected void  ScaleEenemy(){
 		damage += GameController.singleton.WaveCounter*GameController.singleton.EnemyScaleWithWave *damage;
 		MaxHealth += GameController.singleton.WaveCounter*GameController.singleton.EnemyScaleWithWave *MaxHealth;
 	}
+		
 
-	// Use this for initialization
-	public int Compare (Enemy x, Enemy y)
-	{
-		if (x.value > y.value)
-			return 1;
-		else if (x.value < y.value)
-			return -1;
-		else
-			return 0;
-	
-	}
 
 
 	public void ReleaseXP(){

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-public class EnemyBullet : NetworkBehaviour {
+public class EnemyBullet : Projectile {
 	internal float damage;
 	internal Rigidbody rg;
 
@@ -18,7 +18,7 @@ public class EnemyBullet : NetworkBehaviour {
 		transform.rotation.SetLookRotation(rg.velocity);
 
 	}
-	void OnTriggerEnter(Collider other){
+	protected override void TriggerEnter(Collider other){
 
 		if (other.GetComponent<Player> () != null) {
 

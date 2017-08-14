@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class GrowingSphere : NetworkBehaviour {
+public class GrowingSphere : Projectile {
 
 	float ballDamage = 0;
 	bool triggered = false;
@@ -71,7 +71,7 @@ public class GrowingSphere : NetworkBehaviour {
 	{
 		isFromPlayer = PlayerID;
 	}
-	private void OnTriggerStay(Collider other)
+	protected override void TriggerStay(Collider other)
 	{
 		if (other.tag == "Enemy") {
 			if (other.GetComponent<EnemyHealth> () != null) {
@@ -85,7 +85,7 @@ public class GrowingSphere : NetworkBehaviour {
 		}
 	}
 
-	private void OnTriggerEnter(Collider other)
+	protected override void TriggerEnter(Collider other)
 	{
 	if (other.tag == "Enemy")
 		{

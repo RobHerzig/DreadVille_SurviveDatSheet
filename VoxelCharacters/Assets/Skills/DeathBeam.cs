@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class DeathBeam : NetworkBehaviour {
+public class DeathBeam : Projectile {
 
 	float beamDamage = 0;
 	NetworkInstanceId isFromPlayer;
@@ -21,11 +21,11 @@ public class DeathBeam : NetworkBehaviour {
 		isFromPlayer = PlayerID;
 	}
 
-	private void OnTriggerEnter(Collider other){
+	protected override void TriggerEnter(Collider other){
 		
 	}
 
-	private void OnTriggerStay(Collider other)
+	protected override void TriggerStay(Collider other)
 	{
 
 		if (other.tag == "Enemy")

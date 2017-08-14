@@ -44,6 +44,7 @@ public class SpellLightBombs : Skill {
 		GameObject instance = Instantiate(HealSphere, (transform.position + transform.up * 0.4f+ spawnPoint), Quaternion.identity) as GameObject;
 		instance.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 		LightBomb SphereScript = instance.GetComponent<LightBomb>();
+		SphereScript.SetOrigin (gameObject);
 		SphereScript.initHealingSphere(damage, range, speed, angleToPassPerSec, timeInactive, accerleration,gameObject.transform);
 		instance.transform.parent = transform;
 		NetworkServer.Spawn (instance);

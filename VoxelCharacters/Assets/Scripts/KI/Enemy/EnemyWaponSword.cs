@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyWaponSword : MonoBehaviour {
+public class EnemyWaponSword : Projectile {
 
 	internal float damage;
-	void OnTriggerEnter(Collider other){
+	protected override void TriggerEnter(Collider other){
 		
 		if (other.GetComponent<Player> () != null) {
 			

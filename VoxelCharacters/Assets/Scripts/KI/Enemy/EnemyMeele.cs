@@ -13,8 +13,10 @@ public class EnemyMeele : Enemy {
 
 	public override void Init()
 	{
-		if (sword != null)
+		if (sword != null) {
 			sword.damage = damage;
+			sword.SetOrigin (gameObject);
+		}
 		agent =GetComponent<NavMeshAgent>();
 		agent.stoppingDistance = StoppingDistance;
 		GetComponentInChildren<Animator> ();

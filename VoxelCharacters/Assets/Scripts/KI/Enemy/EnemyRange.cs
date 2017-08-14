@@ -44,7 +44,7 @@ public class EnemyRange : Enemy {
 	void CmdSpawnBullet(){
 		GameObject Bullet = Instantiate (bullet, transform.position + transform.forward * 0.3f + transform.up * 0.3f, transform.rotation);
 		Bullet.GetComponent<EnemyBullet> ().damage = damage;
-
+		Bullet.GetComponent<EnemyBullet> ().SetOrigin (gameObject);
 		Bullet.GetComponent<Rigidbody> ().velocity = (currTarget- transform.position).normalized*bulletSpeed; //+transform.up*2).normalized*distanceToTarget*60;
 		NetworkServer.Spawn (Bullet);
 		Destroy (Bullet, 5);

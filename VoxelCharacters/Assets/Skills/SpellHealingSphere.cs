@@ -23,6 +23,7 @@ public class SpellHealingSphere : Skill {
 		HealingSphere SphereScript = instance.GetComponent<HealingSphere>();
 		SphereScript.initHealingSphere(damage,damage);
 		SphereScript.InitRangeSpeed (range, speed);
+		SphereScript.SetOrigin (gameObject);
 		SphereScript.InitID (gameObject.GetComponent<NetworkIdentity>().netId);
 		currSphere = instance;
 		NetworkServer.Spawn (instance);

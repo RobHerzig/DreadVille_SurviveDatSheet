@@ -22,6 +22,7 @@ public class SpellGrowingSphere : Skill {
 
 		GameObject instance = Instantiate(Sphere, transform.position + transform.up * 0.6f+transform.forward*2f, transform.rotation) as GameObject;
 		instance.GetComponent<GrowingSphere>().InitSphere(damage,numberOfSpellstoExplode,detonationRadius,maxSize);
+		instance.GetComponent<GrowingSphere> ().SetOrigin (gameObject);
 	
 		NetworkServer.Spawn (instance);
 		Destroy (instance, maxDuration);
